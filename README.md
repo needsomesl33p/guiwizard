@@ -100,13 +100,11 @@ gui.window.mainloop()
 
 The created GUI with GUIWizard:
 
-![GUI](https://raw.githubusercontent.com/needsomesl33p//
-guiwizard/master/images/init.png)
+![GUI](https://raw.githubusercontent.com/needsomesl33p/guiwizard/master/images/init.png)
 
 After some interaction:
 
-![Wizard](https://raw.githubusercontent.com/needsomesl33p//
-guiwizard/master/images/after.png)
+![Wizard](https://raw.githubusercontent.com/needsomesl33p/guiwizard/master/images/after.png)
 
 ### Tested on
 
