@@ -59,7 +59,7 @@ class GUIWizard(object):
         self._panels = frames
 
     def pack_on_panel(self, wigets: List[Widget], packing_params: dict) -> None:
-        '''Packs every Widget in the list on on the panel. By the tkinter design, you need to provide the parent of the child wiget, which is the panel.'''
+        '''Packs every Widget in the list on the panel. By the tkinter design, you need to provide the parent of the child widget, which is the panel.'''
         for item in wigets:
             branch_name = str(item)
             split_chr = '!' if '!' in branch_name else '.'
@@ -75,6 +75,6 @@ class GUIWizard(object):
             item.pack(**kwargs)
 
     def pack_on_window(self) -> None:
-        '''Packs the panels on the window. It starts the packing from a left and goes to the right.'''
+        '''Packs the panels on the window. It starts the packing from the left and goes to the right.'''
         for frame in self._panels:
             frame.pack(side='left', expand=True)
