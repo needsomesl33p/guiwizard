@@ -1,4 +1,6 @@
-from guiwizard import *
+from tkinter import Frame, Widget, Label, Entry, Button, Radiobutton, StringVar
+from guiwizard import GUIWizard
+from typing import List, Tuple
 
 
 def left_panel(panel: Frame, radio_foodtime_type: StringVar) -> Tuple[List[Widget], dict]:
