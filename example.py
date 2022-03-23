@@ -19,7 +19,7 @@ def left_panel(panel: Frame, radio_foodtime_type: StringVar) -> Tuple[List[Widge
 
 def right_panel(panel: Frame) -> Tuple[List[Widget], dict]:
     widgets: List[Widget] = []
-    widgets.append(Label(panel, text='What is you favorite food?'))
+    widgets.append(Label(panel, text='What is your favorite food?'))
     widgets.append(Entry(panel, width=35, name='fav_food'))
     widgets.append(Button(panel, text="Let's eat", command=get_my_fav_food))
     packing_params = {'fav_food': {'pady': (20, 90)}}
