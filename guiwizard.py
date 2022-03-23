@@ -1,5 +1,5 @@
 from tkinter import Tk, Canvas, PhotoImage, Frame, Widget
-from typing import List, Tuple
+from typing import List
 
 
 class GUIWizard:
