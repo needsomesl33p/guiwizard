@@ -1,5 +1,5 @@
 from tkinter import Tk, Canvas, PhotoImage, Frame, Widget
-from typing import List
+from typing import List, Tuple
 
 
 class GUIWizard:
@@ -28,12 +28,19 @@ class GUIWizard:
     def panels(self, value: List[Frame]) -> None:
         self._panels = value
 
+    def get_packed_widget_name(self, branch_name: str):
+        '''The full name contains the panel and a dot (.) or / and an exclamation mark (!). For example: .panel3.!label
+        This method strips the panel section and the unnecessary characters from the widget name.'''
+        split_chr = '!' if '!' in branch_name else '.'
+        return branch_name.split(split_chr)[-1]
+
     def get_component(self, panel_number: int, component_name: str) -> Widget:
         '''Returns a Widget component. You need to provide the number of the panel where the specific component can be located.'''
         panel = self._panels[panel_number]
         components = panel.winfo_children()
         for item in components:
-            if f'.panel{panel_number}.{component_name}' == str(item):
+            name = self.get_packed_widget_name(str(item))
+            if name == component_name:
                 return item
 
     def get_component_from_window(self, componenet_name: str) -> Widget:
@@ -41,8 +48,7 @@ class GUIWizard:
         panels_len = len(self._panels)
         for index in range(panels_len):
             item = self.get_component(index, componenet_name)
-            if item:
-                return item
+            if item: return item
 
     def update_ui(self, components: dict) -> None:
         '''Updates or configures the UI components with the specified parameters.'''
@@ -59,11 +65,9 @@ class GUIWizard:
         self._panels = frames
 
     def pack_on_panel(self, wigets: List[Widget], packing_params: dict) -> None:
-        '''Packs every Widget in the list on the panel. By the tkinter design, you need to provide the parent of the child widget, which is the panel.'''
+        '''Packs every Widget in the list on on the panel. By the tkinter design, you need to provide the parent of the child wiget, which is the panel.'''
         for item in wigets:
-            branch_name = str(item)
-            split_chr = '!' if '!' in branch_name else '.'
-            name = branch_name.split(split_chr)[-1]
+            name = self.get_packed_widget_name(str(item))
             if name in packing_params.keys():
                 item.pack(**packing_params[name])
             else:
@@ -75,6 +79,6 @@ class GUIWizard:
             item.pack(**kwargs)
 
     def pack_on_window(self) -> None:
-        '''Packs the panels on the window. It starts the packing from the left and goes to the right.'''
+        '''Packs the panels on the window. It starts the packing from a left and goes to the right.'''
         for frame in self._panels:
             frame.pack(side='left', expand=True)
