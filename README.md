@@ -7,7 +7,7 @@ Defines a tkinter window and frames/panels to make the GUI development more tran
 
 Each panel can be described by a function:
 
-```
+```python
 def left_panel(panel: Frame, radio_foodtime_type: StringVar) -> Tuple[List[Widget], dict]:
     widgets: List[Widget] = []
     widgets.append(Label(panel, text='When do you eat?', name='eatlabel'))
@@ -46,7 +46,7 @@ If you do not name the components, you can still refer to them with the followin
 
 ### Right panel
 
-```
+```python
 def right_panel(panel: Frame) -> Tuple[List[Widget], dict]:
     widgets: List[Widget] = []
     widgets.append(Label(panel, text='What is you favorite food?'))
@@ -58,7 +58,7 @@ def right_panel(panel: Frame) -> Tuple[List[Widget], dict]:
 
 After we defined the panels we can add more logic to our application:
 
-```
+```python
 def get_my_fav_food():
     foodtime = radio_foodtime_type.get()
     fav_food = gui.get_component_from_window('fav_food').get()
@@ -77,7 +77,7 @@ With this technique you organise your `Widgets` by panels and names. Tearing dow
 
 ## Creating the window, panels and put them together
 
-```
+```python
 gui = GUIWizard('My Exmaple GUI App', 1000, 760, 20, 20, 500, 450, 'logo.png')
 gui.create_panels(2)
 
